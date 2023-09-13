@@ -10,7 +10,7 @@ setup:
 
 install:
 	# This should be run from inside a virtualenv
-	pip install --upgrade pip &&\
+	pip install --upgrade pip && \
 		pip install -r requirements.txt
 
 test:
@@ -21,7 +21,7 @@ validate-circleci:
 	circleci config process .circleci/config.yml
 
 run-circleci-local:
-    circleci local execute
+	circleci local execute
 
 lint:
 	hadolint Dockerfile
