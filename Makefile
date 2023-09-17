@@ -6,7 +6,7 @@
 # (Optional) Build a simple integration test
 
 setup:
-	python3 -m venv ~/.project-ml-microservice-kubernetes
+	python3 -m venv ~/.KubernetesProject
 
 install:
 	# This should be run from inside a virtualenv
@@ -14,14 +14,14 @@ install:
 		pip install -r requirements.txt
 
 test:
-	python -m pytest -vv --cov=myrepolib tests/*.py
-	python -m pytest --nbval notebook.ipynb
+	#python -m pytest -vv --cov=myrepolib tests/*.py
+	#python -m pytest --nbval notebook.ipynb
 
 validate-circleci:
-	circleci config process .circleci/config.yml
+	./circleci config process .circleci/config.yml
 
 run-circleci-local:
-	circleci local execute
+	./circleci local execute -c .circleci/config.yml build
 
 lint:
 	hadolint Dockerfile

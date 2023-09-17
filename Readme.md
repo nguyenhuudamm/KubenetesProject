@@ -20,19 +20,20 @@ ssh-keygen -t rsa
 -- Tạo 1 repositry [Elastic Container Registry]
 -- Tạo 1 IAM
     -- aws configure trong Cloud9
+    -- popup [cancel -> BTN_Left]
 
 
--- cài đặt python3.9
-    + curl -O https://www.python.org/ftp/python/3.9.7/+ Python-3.9.7.tgz
-    + tar -xzvf Python-3.9.7.tgz
-    + cd Python-3.9.7
-    + ./configure
-    + make
-    + sudo make install
-    + python3.9 --version
+  [no]  -- cài đặt python3.9
+        + curl -O https://www.python.org/ftp/python/3.9.7/+ Python-3.9.7.tgz
+        + tar -xzvf Python-3.9.7.tgz
+        + cd Python-3.9.7
+        + ./configure
+        + make
+        + sudo make install
+        + python3.9 --version
 
 
--- Khởi tạo 1 hello wordk đơn giản
+[no]-- Khởi tạo 1 hello wordk đơn giản
     - sam init
         - Template: 1
         - Select Helloword
@@ -73,9 +74,10 @@ ssh-keygen -t rsa
 
 
 - Tạo môi trường ảo Python3: 
-    - python3 -m venv venv
+    - python3 -m venv ~/.KubernetesProject
 - Kích hoạt môi trường ảo:
     - source venv/bin/activate
+    source ~/.KubernetesProject/bin/activate
 - Nâng cấp pipnếu bạn cần (tùy chọn): 
     - pip install --upgrade pip
 - Cài đặt pylint: 
@@ -109,13 +111,12 @@ ssh-keygen -t rsa
     -- Kiểm tra
         -- kubectl version --client
         -- kubectl version
-
+-- Cài đặt hadolint
+    sudo wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v1.16.3/hadolint-Linux-x86_64 && \
+    sudo chmod +x /bin/hadolint
 
 -- Check syntax Dockerfile
     - hadolint Dockerfile
-
--- Cài đặt hadolint
-    wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v1.16.3/hadolint-Linux-x86_64
 
 -- Run docker
     - docker build --tag=app .
@@ -139,6 +140,29 @@ ssh-keygen -t rsa
     - cd environment
     - mv circle Devops/project-ml-microservice-kubernetes
 
+
+-- cài đặt eksctl
+EKSCTL đơn giản hóa đáng kể việc tạo cụm EKS bằng cách tự động tạo các tài nguyên AWS cần thiết trong khu vực mặc định của bạn, chẳng hạn như:
+
+VPC - mạng ảo được xác định bởi một dải địa chỉ IP được phân bổ cho bạn.
+Mạng con - mạng con là tập hợp con của VPC (địa chỉ IP) trong vùng sẵn sàng mong muốn của bạn (trung tâm dữ liệu)
+Nhóm nút - nhóm logic của các nút công nhân. Lưu ý rằng mỗi nút là một Máy ảo (VM)
+Quyết định AMI và Loại nút công nhân. AMI xác định hệ điều hành cơ bản, mặc định là Linux với các gói hỗ trợ. Loại xác định dung lượng phần cứng.
+Điểm cuối API Kubernetes
+
+    -- cài đặt
+        curl --silent --location "https://github.com/weaveworks/eksctl/releases/download/latest_release/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+        sudo mv /tmp/eksctl /usr/local/bin
+        sudo chown -R $(whoami) /usr/local/<directory_name>
+
+    -- các lệnh
+        -- create
+            eksctl create cluster --config-file=<path>
+            eksctl create cluster --name myCluster --nodes=4
+        -- get
+            eksctl get cluster [--name=<name>][--region=<region>]
+        -- delete
+            eksctl delete cluster --name=<name> [--region=<region>]
 
 
 

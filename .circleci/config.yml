@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: python:3.7.3-stretch
+      - image: python:3.7.9
 
     working_directory: ~/repo
 
@@ -10,6 +10,8 @@ jobs:
       - checkout
       - restore_cache:
           keys:
+            - v1-dependencies-{{ checksum "requirements.txt" }}
+            # fallback to using the latest cache if no exact match is found
             - v1-dependencies
 
       - run:
@@ -25,10 +27,10 @@ jobs:
       - save_cache:
           paths:
             - ./venv
-          key: v1-dependencies
+          key: v1-dependencies-{{ checksum "requirements.txt" }}
 
       - run:
           name: run lint
           command: |
             . venv/bin/activate
-            make lint           
+            make lint
