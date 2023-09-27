@@ -4,7 +4,7 @@ docker --version
 
 # Step 1:
 # Build image and add a descriptive tag
-docker build -t kubernitesproject .
+docker build -t kubernetesproject .
 
 # Step 2: 
 # List docker images
@@ -12,9 +12,15 @@ docker images
 
 # Step 3: 
 # Run flask app
-docker run -d -p 8080:80 kubernitesproject
+docker run -d -p 80:80 kubernetesproject
 
 # Step 4:
 # Check container
 docker ps
+
+# Step 5:
+# Get IP address
+docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' <container-id>
+
+docker run -it --network container:19ad54b7d4d3 ubuntu:latest
 

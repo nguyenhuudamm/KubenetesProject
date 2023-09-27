@@ -13,9 +13,11 @@
     -- aws configure in Cloud9
     -- popup [cancel -> BTN_Left]
 
--- Create env KubernitesProject in CLoud9
-    -- python3 -m venv ~/.KubernitesProject
-    -- source  ~/.KubernitesProject/bin/activate
+-- Create env KubenetesProject
+    -- sudo apt install python3-venv
+    -- python3 -m venv ~/.KubenetesProject
+    -- source  ~/.KubenetesProject/bin/activate         [login]
+    -- deactivate                       [out]
     -- [CHECK][required Makefile]
         -- make install
         -- make lint
@@ -36,11 +38,15 @@
         -- eksctl version
 
 -- Install hadolint
-    -- sudo wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v1.16.3/hadolint-Linux-x86_64 && \
+    -- sudo wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v1.16.3/hadolint-Linux-x86_64
     -- sudo chmod +x /bin/hadolint
 
     -- [CHECK]
         -- hadolint Dockerfile
+
+-- Install Make
+    -- sudo apt install make
+    -- sudo apt install make-guile
 
 -- Run docker
     - docker build --tag=app .
@@ -49,7 +55,17 @@
         - ls
         - python app.py
         - exit
-    -
+
+-- Install python3.7.9
+    -- sudo apt update
+    -- sudo apt install software-properties-common
+    -- sudo add-apt-repository ppa:deadsnakes/ppa
+    -- sudo apt update
+    -- sudo apt install python3.9
+    -- python3.9 --version
+
+    -- set mặc định là python3.9
+        sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.7 1
 
 -- Thiết lập circle
     -- curl -fLSs https://circle.ci/cli | bash
@@ -58,7 +74,7 @@
     -- wget https://github.com/CircleCI-Public/circleci-cli/releases/download/v0.1.28995/circleci-cli_0.1.28995_linux_amd64.tar.gz
     -- tar zxvf circleci-cli_0.1.28995_linux_amd64.tar.gz
     -- cd circleci-cli_0.1.28995_linux_amd64
-    -- mv circleci ~/environment/KubenetesProject
+    -- mv circleci ~/KubenetesProject
     -- [CHECK]
         -- ./circleci
         -- make validate-circleci
@@ -96,6 +112,31 @@ Quyết định AMI và Loại nút công nhân. AMI xác định hệ điều h
                 -- add [rootflags=pquota,uquota]
             -- sudo grub2-mkconfig -o /boot/grub2/grub.cfg
             -- reboot
+
+
+            sudo apt install python3-pip
+            pip install --upgrade awscli
+            curl "https://d1vvhvl2y92vvt.cloudfront.net/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+            unzip awscliv2.zip
+            sudo ./aws/install
+            aws --version
+
+            -- danh sách namespaces
+            kubectl get namespaces
+            -- nếu kubectl get pods -> "No resources found"  -> có thể đang set namespaces [default]
+            -- set đến namespaces khác
+            kubectl config set-context --current --namespace=<my-kube-system>
+
+
+
+            sudo yum update
+            sudo yum install -y curl yum-utils device-mapper-persistent-data lvm2
+            sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+            sudo yum install docker-ce docker-ce-cli containerd.io
+            sudo yum-config-manager --save --setopt=docker-ce-stable.skip_if_unavailable=true
+            sudo systemctl start docker
+            sudo systemctl enable docker
+            sudo docker --version
 
 
 
