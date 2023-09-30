@@ -3,24 +3,17 @@
 
 # Assumes that an image is built via `run_docker.sh`
 
+# Step 0:
+# Login to ECR
+aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 830989663524.dkr.ecr.us-east-1.amazonaws.com
+
 # Step 1:
 # Create dockerpath
-dockerpath=damnh1/kubernetesproject
+dockerpath=damnh1-kubernestesproject
 
-# Step 2:  z0-=====================================
+# Step 2:
 # Authenticate & tag
-aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 830989663524.dkr.ecr.us-east-1.amazonaws.com
-docker tag kubernetesproject:latest $dockerpath:latest
-echo "Docker ID and Image: $dockerpath"
-
-# Step 3:
-# Push image to a docker repository
-docker push $dockerpath:latest
-
-
-
-docker tag kubernetesproject:latest damnh1/kubernetesproject:latest
-echo "Docker ID and Image: damnh1/kubernetesproject"
+docker tag damnh1-kubernestesproject:latest 830989663524.dkr.ecr.us-east-1.amazonaws.com/damnh1-kubernestesproject:latest
 
 # Step 3:
 # Push image to a docker repository
