@@ -12,7 +12,7 @@ docker images
 
 # Step 3: 
 # Run flask app
-docker run -d -p 8000:80 kubernetesproject
+docker run -d -p 8080:8080 damnh1-kubernestesproject
 
 # Step 4:
 # Check container

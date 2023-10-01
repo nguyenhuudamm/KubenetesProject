@@ -5,10 +5,10 @@
 # Step 1:
 # This is your Docker ID/path
 # dockerpath=<>
-dockerpath="damnh1/kubernetesproject"
+dockerpath="830989663524.dkr.ecr.us-east-1.amazonaws.com/damnh1-kubernestesproject:latest"
 
 # Run in Docker Hub container with kubernetes
-kubectl run kubernetesproject --image=kubernetesproject2:latest --port=80 --labels app=kubernetesproject
+kubectl run kubernetesproject --image=830989663524.dkr.ecr.us-east-1.amazonaws.com/damnh1-kubernestesproject:latest --port=8000 --labels app=kubernetesproject
 
 kubectl create deploy kubernetesproject --image=kubernetesproject:latest
     
@@ -21,7 +21,7 @@ kubectl create deploy kubernetesproject --image=kubernetesproject:latest
 kubectl get pods
 
 # Forward the container port to host
-kubectl port-forward flaskskearlndemo 8000:80
+kubectl port-forward kubernetesproject 8000:80
 
 
 #create:  
