@@ -84,7 +84,7 @@
 ![Local Image](images/run_kubernetes_02.PNG)
 
 #### Output: log pods
-![Local Image](images/kube_log.txt)
+![Local Image](images/run_kubernetes_03.PNG)
 
 
 
