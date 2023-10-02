@@ -90,16 +90,23 @@ Quyết định AMI và Loại nút công nhân. AMI xác định hệ điều h
 Điểm cuối API Kubernetes
 
     -- cài đặt
-        curl --silent --location "https://github.com/weaveworks/eksctl/releases/download/latest_release/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+        curl -LO "https://github.com/weaveworks/eksctl/releases/download/latest_release/eksctl_$(uname -s)_amd64.tar.gz"
+        tar xzf eksctl_$(uname -s)_amd64.tar.gz -C /tmp
         sudo mv /tmp/eksctl /usr/local/bin
         sudo chown -R $(whoami) /usr/local/<directory_name>
+
+        curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+        chmod +x kubectl
+        sudo mv kubectl /usr/local/bin/
+        kubectl version --client
+
 
     -- các lệnh
         -- create
             eksctl create cluster --config-file=<path>
             eksctl create cluster --name myCluster --nodes=4
         -- get
-            eksctl get cluster [--name=<name>][--region=<region>]
+            eksctl get cluster --name=kubernetesproject --region=us-east-1
         -- delete
             eksctl delete cluster --name=<name> [--region=<region>]
 
@@ -118,8 +125,17 @@ Quyết định AMI và Loại nút công nhân. AMI xác định hệ điều h
             pip install --upgrade awscli
             curl "https://d1vvhvl2y92vvt.cloudfront.net/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
             unzip awscliv2.zip
-            sudo ./aws/install
+            sudo ./aws/install --update
             aws --version
+
+
+            #create:  
+                eksctl create cluster --name kubernetesproject --region=us-east-1
+            #cleanup: 
+                eksctl delete cluster --region=us-east-1 --name=kubernetesproject
+
+            
+
 
             -- danh sách namespaces
             kubectl get namespaces

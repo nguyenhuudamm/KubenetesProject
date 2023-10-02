@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # This file tags and uploads an image to Docker Hub
 
-# Assumes that an image is built via `run_docker.sh`
+# Project using ECR of AWS to save the Image
 
 # Step 0:
 # Login to ECR
@@ -17,4 +17,4 @@ docker tag damnh1-kubernestesproject:latest 830989663524.dkr.ecr.us-east-1.amazo
 
 # Step 3:
 # Push image to a docker repository
-docker push damnh1/kubernetesproject:latest
+docker push 830989663524.dkr.ecr.us-east-1.amazonaws.com/damnh1-kubernestesproject:latest

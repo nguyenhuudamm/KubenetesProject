@@ -10,6 +10,7 @@ docker build -t damnh1-kubernestesproject .
 # List docker images
 docker images
 
+sleep 60
 # Step 3: 
 # Run flask app
 docker run -d -p 8080:8080 damnh1-kubernestesproject

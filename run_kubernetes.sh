@@ -7,28 +7,14 @@
 # dockerpath=<>
 dockerpath="830989663524.dkr.ecr.us-east-1.amazonaws.com/damnh1-kubernestesproject:latest"
 
-# Run in Docker Hub container with kubernetes
-kubectl run kubernetesproject --image=830989663524.dkr.ecr.us-east-1.amazonaws.com/damnh1-kubernestesproject:latest --port=8000 --labels app=kubernetesproject
+# Run in Docker Hub container with Kubernetes
+kubectl run kubernetesproject --image=$dockerpath --port=8000 --labels app=kubernetesproject
 
+# Create deploy
 kubectl create deploy kubernetesproject --image=kubernetesproject:latest
-    
-    kubectl run kubernetesproject \
-    --generator=run-pod/v1 \
-    --image=$dockerpath:latest \
-    --port=8080 --labels app=kubernetesproject
-
+sleep 120
 # List kubernetes pods
 kubectl get pods
 
 # Forward the container port to host
-kubectl port-forward kubernetesproject 8000:80
-
-
-#create:  
-    eksctl create cluster --name kubernetesproject --region=us-east-1
-#cleanup: 
-    eksctl delete cluster --region=us-east-1 --name=kubernetesproject
-
- 
-
-
+kubectl port-forward kubernetesproject 8081:8080
