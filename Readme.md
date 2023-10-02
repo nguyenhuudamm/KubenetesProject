@@ -27,10 +27,6 @@
     -- sudo apt install make
     -- sudo apt install make-guile
 
-
-    -- set mặc định là python3.9
-        sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.7 1
-
 #### Install circle
     -- curl -fLSs https://circle.ci/cli | bash
     -- sudo !!
