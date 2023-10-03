@@ -58,7 +58,10 @@
 #### Step by step - Project result
 
 #### Check circle
-![Local Image](images/check_circle.PNG)
+### Circle failed
+![Local Image](images/circle_fail.PNG)
+### Circle passed
+![Local Image](images/circle_pass.PNG)
 
 #### Run docker
 ![Local Image](images/run_docker_01.PNG)
