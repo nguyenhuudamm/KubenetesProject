@@ -1,7 +1,6 @@
 #### Get source
     git clone https://github.com/nguyenhuudamm/KubenetesProject.git
 
-
 #### Install kubectl
     -- curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
     -- which kubectl
@@ -57,11 +56,19 @@
 
 #### Step by step - Project result
 
+#### Link github
+    https://github.com/nguyenhuudamm/KubenetesProject
+
+![Local Image](images/github.PNG)
+
 #### Check circle
 ### Circle failed
 ![Local Image](images/makeline_docker_fail.PNG)
 ![Local Image](images/makeline_app_fail.PNG)
 ### Circle passed
+    https://app.circleci.com/pipelines/github/nguyenhuudamm/KubenetesProject/22/workflows/3e081327-f228-46f6-8ddc-103cbba34346/jobs/24
+
+![Local Image](images/circle_install.PNG)
 ![Local Image](images/circle_pass.PNG)
 
 #### Run docker
