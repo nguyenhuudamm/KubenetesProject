@@ -59,7 +59,8 @@
 
 #### Check circle
 ### Circle failed
-![Local Image](images/circle_fail.PNG)
+![Local Image](images/makeline_docker_fail.PNG)
+![Local Image](images/makeline_app_fail.PNG)
 ### Circle passed
 ![Local Image](images/circle_pass.PNG)
 
@@ -68,10 +69,10 @@
 ![Local Image](images/run_docker_02.PNG)
 
 #### Run make_prediction.sh 
-![Local Image](images/docker_log_02.PNG)
+![Local Image](images/docker_log_01.PNG)
 
 #### Output: log container
-![Local Image](images/docker_log_01.PNG)
+![Local Image](images/docker_log_02.PNG)
 
 #### Upload docker
 ![Local Image](images/upload_docker.PNG)
