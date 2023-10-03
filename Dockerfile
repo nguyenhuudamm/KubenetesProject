@@ -1,5 +1,4 @@
 FROM python:3.7.9
-check Docker not pass
 ## Step 1:
 # Create a working directory
 WORKDIR /app
