@@ -65,6 +65,11 @@
 ### Circle failed
 ![Local Image](images/makeline_docker_fail.PNG)
 ![Local Image](images/makeline_app_fail.PNG)
+
+### CircleCI badge
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/nguyenhuudamm/KubenetesProject/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/nguyenhuudamm/KubenetesProject/tree/main)
+
+
 ### Circle passed
     https://app.circleci.com/pipelines/github/nguyenhuudamm/KubenetesProject/22/workflows/3e081327-f228-46f6-8ddc-103cbba34346/jobs/24
 
